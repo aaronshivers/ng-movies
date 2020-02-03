@@ -43,9 +43,13 @@ export class EditMovieComponent implements OnInit {
       .subscribe(res => console.log(res));
   }
 
-  onSubmit() {
+  updateMovie() {
     this.movie.name = this.movieForm.value.movieData.name;
     this.movie.year = this.movieForm.value.movieData.year;
+  }
+
+  onSubmit() {
+    this.updateMovie();
     this.patchMovie();
   }
 

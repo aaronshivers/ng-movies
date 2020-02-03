@@ -3,15 +3,10 @@
 <form (ngSubmit)="onSubmit()" #f="ngForm">
   <div ngModelGroup="movieData">
     <label>Movie Name
-      <input
-        type="text"
-        ngModel
-        name="name"
-        [value]="[movie.name]"
-        required>
+      <input type="text" [(ngModel)]="movie.name" name="name" required>
     </label>
     <label>Movie Year
-      <input type="number" ngModel name="year" [value]="[movie.year]" required>
+      <input type="number" [(ngModel)]="movie.year" name="year" required>
     </label>
     <button type="submit">Update Movie</button>
   </div>
