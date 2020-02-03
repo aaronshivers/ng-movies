@@ -1,0 +1,20 @@
+<h2>Edit Movie</h2>
+
+<form (ngSubmit)="onSubmit()" #f="ngForm">
+  <div ngModelGroup="movieData">
+    <label>Movie Name
+      <input
+        type="text"
+        ngModel
+        name="name"
+        [value]="[movie.name]"
+        required>
+    </label>
+    <label>Movie Year
+      <input type="number" ngModel name="year" [value]="[movie.year]" required>
+    </label>
+    <button type="submit">Update Movie</button>
+  </div>
+</form>
+
+<button type="button" (click)="goBack()">Go Back</button>

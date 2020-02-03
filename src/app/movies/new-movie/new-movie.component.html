@@ -1,0 +1,13 @@
+<h2>New Movie</h2>
+
+<form (ngSubmit)="onSubmit()" #f="ngForm">
+  <div ngModelGroup="movieData">
+    <label>Movie Name
+      <input type="text" ngModel name="name" required>
+    </label>
+    <label>Movie Year
+      <input type="number" ngModel name="year" required>
+    </label>
+    <button [disabled]="f.invalid" type="submit">Add New Movie</button>
+  </div>
+</form>

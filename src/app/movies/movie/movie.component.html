@@ -1,2 +1,5 @@
 <p>movie works!</p>
 <p *ngIf="movie">{{ movie.id }} - {{ movie.name }} - {{ movie.year }}</p>
+<button type="button" [routerLink]="['/movies', this.id, 'edit']">Edit Movie</button>
+<button type="button" (click)="onDeleteMovie()">Delete Movie</button>
+<button type="button" (click)="goBack()">Go Back</button>

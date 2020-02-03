@@ -1,4 +1,5 @@
 <p>movies works!</p>
+<app-new-movie></app-new-movie>
 <ul>
   <li *ngFor="let movie of movies">
     <a [routerLink]="['/movies', movie.id]">{{ movie.id }} - {{ movie.name }} - {{ movie.year }}</a>

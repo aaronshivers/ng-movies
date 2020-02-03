@@ -3,6 +3,7 @@ import { MoviesService } from '../movies.service';
 import { Movie } from '../movie';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs/operators';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-movie',
@@ -11,19 +12,34 @@ import { map } from 'rxjs/operators';
 })
 export class MovieComponent implements OnInit {
   movie: Movie;
+  id = this.route.snapshot.params.id;
 
-  constructor(private moviesService: MoviesService, private route: ActivatedRoute) { }
+
+  constructor(
+    private moviesService: MoviesService,
+    private route: ActivatedRoute,
+    private location: Location,
+  ) {
+  }
 
   ngOnInit() {
     this.getMovie();
   }
 
   getMovie(): void {
-    const id = this.route.snapshot.params.id;
-    this.moviesService.getMovie(id).pipe(
+    this.moviesService.getMovie(this.id).pipe(
       map((response: { movie }) => response.movie),
     ).subscribe((movie: Movie) => {
       this.movie = movie;
     });
+  }
+
+  onDeleteMovie() {
+    this.moviesService.deleteMovie(this.id).subscribe();
+    this.goBack();
+  }
+
+  goBack() {
+    this.location.back();
   }
 }
